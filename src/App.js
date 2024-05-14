@@ -1,24 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
-import TodoRowItems from './components/TodoRowItem';
 import TodoTable from './components/TodoTable';
+import React, {useState} from 'react';
+import NewTodoForm from './components/NewTodoForm';
 
 function App() {
 
 
-  const todo = [
+  const [todo, setTodo] = useState([
     {rowNumber: 1, rowDescription: 'Feed dog', rowAssigned: 'User one'},
     {rowNumber: 2, rowDescription: 'Water plants', rowAssigned: 'User two'},
     {rowNumber: 3, rowDescription: 'cook dinner', rowAssigned: 'User one'},
     {rowNumber: 4, rowDescription: 'charge phone', rowAssigned: 'User one'},
 
   ]
+  )
+  const addTodo = (description, assigned) => {
 
+    if (todo.length > 0) {
+      const newTodo = {
+        rowNumber: todo.length + 1, 
+        rowDescription: description, 
+        rowAssigned: assigned
+      };
 
-
-
-
-
+      setTodo(todo => [...todo, newTodo])
+      
+    }
+  }
 
   return (
     <div className='mt-5 container'>
@@ -28,6 +37,10 @@ function App() {
         </div>
         <div className='card-body'>
          <TodoTable todo = {todo}/>
+         <button className='btn btn-primary' onClick={addTodo}> 
+            Add new todo
+          </button>
+          <NewTodoForm  addTodo={addTodo}/>
         </div>
       </div>
     </div>
