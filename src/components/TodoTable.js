@@ -14,6 +14,7 @@ function TodoTable(props) {
             <tbody>
                 {props.todo.map(todo => (
                     <TodoRowItems 
+                                key={todo.rowNumber}
                                 rowNumber = {todo.rowNumber}
                                 rowDescription = {todo.rowDescription}
                                 rowAssigned = {todo.rowAssigned}

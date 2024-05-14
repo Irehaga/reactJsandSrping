@@ -17,9 +17,15 @@ function App() {
   )
   const addTodo = (description, assigned) => {
 
+    let rowNumber = 0;
     if (todo.length > 0) {
+      rowNumber = todo[todo.length - 1].rowNumber + 1;
+    }else{
+        rowNumber = 1;
+       
+    }
       const newTodo = {
-        rowNumber: todo.length + 1, 
+        rowNumber: rowNumber,
         rowDescription: description, 
         rowAssigned: assigned
       };
@@ -27,7 +33,7 @@ function App() {
       setTodo(todo => [...todo, newTodo])
       
     }
-  }
+  
 
   return (
     <div className='mt-5 container'>
