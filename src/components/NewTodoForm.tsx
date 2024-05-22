@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 
 
-function NewTodoForm(props) {
+export const NewTodoForm: React.FC<{addTodo: Function}> = (props) => {
 
     const [description, setDescription] = useState('');
-    const [assigned, setAssigned] = useState();
+    const [assigned, setAssigned] = useState('');
 
     const submitTodo = () => {
         if(description !== '' && assigned !== ''){
             props.addTodo(description, assigned);
             setAssigned('');
-            setDescription('')
+            setDescription('');
 
         } 
     }
@@ -50,4 +50,3 @@ function NewTodoForm(props) {
     )
 }
 
-export default NewTodoForm

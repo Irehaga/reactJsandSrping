@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import TodoTable from './components/TodoTable';
+import {TodoTable} from './components/TodoTable';
 import React, {useState} from 'react';
-import NewTodoForm from './components/NewTodoForm';
+import {NewTodoForm} from './components/NewTodoForm';
 
-function App() {
+export const  App = () => {
 
 
   const [showAddTodoForm, setShowTodoForm] = useState(false);
@@ -17,7 +16,7 @@ function App() {
     {rowNumber: 4, rowDescription: 'charge phone', rowAssigned: 'User one'},
     ]
   )
-  const addTodo = (description, assigned) => {
+  const addTodo = (description: string, assigned: string) => {
 
     let rowNumber = 0;
     if (todo.length > 0) {
@@ -37,7 +36,7 @@ function App() {
     }
 
 
-    const deleteTodo = (deleteTodoRowNumber) => {
+    const deleteTodo = (deleteTodoRowNumber: number) => {
 
       let filtered = todo.filter(function (value) {
 
@@ -46,8 +45,6 @@ function App() {
 
       setTodo(filtered);
     }
-
-  
 
   return (
     <div className='mt-5 container'>
@@ -68,5 +65,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
